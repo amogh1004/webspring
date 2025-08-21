@@ -80,20 +80,57 @@
 
   <!-- Contact / CTA -->
   <section id="contact" class="py-20 bg-gradient-to-r from-indigo-700 to-blue-700 text-white text-center">
-    <h2 class="text-4xl font-bold mb-6">Let’s Talk About Your Website</h2>
-    <p class="mb-8 text-lg">
-      Share your ideas, and we’ll turn them into results. Click below to email us directly.
+    <h2 class="text-4xl font-bold mb-4">Let’s Talk About Your Website</h2>
+    <p class="mb-8 text-lg">Reach out directly — no forms, no fuss.</p>
+
+    <!-- Visible email block -->
+    <div class="max-w-xl mx-auto bg-white text-blue-800 rounded-2xl shadow-xl p-6">
+      <p class="text-sm uppercase tracking-wide font-semibold mb-2 text-blue-600">Email</p>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+        <code id="ws-email" class="text-lg sm:text-xl font-mono break-all">webspringsites@gmail.com</code>
+        <button id="copyEmail"
+                class="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition">
+          Copy Email
+        </button>
+      </div>
+      <p class="mt-3 text-sm text-blue-700/80">
+        Paste into your email client with your ideas, pages to improve, or links to your current site.
+      </p>
+    </div>
+
+    <!-- Optional tiny link if they prefer opening their mail app -->
+    <p class="mt-6 text-sm">
+      Prefer your mail app? 
+      <a class="underline font-semibold text-white/90 hover:text-white" href="mailto:webspringsites@gmail.com?subject=Website%20Update%20Ideas">
+        Click here to open it
+      </a>.
     </p>
-    <a href="mailto:webspringsites@gmail.com?subject=Website%20Update%20Ideas&body=Hi%20WebSpring,%0D%0A%0D%0AI%20have%20some%20ideas%20for%20improving%20my%20website.%20Here%20they%20are:%0D%0A"
-       class="bg-white text-blue-700 px-8 py-4 rounded-2xl shadow-xl hover:bg-gray-100 font-semibold transition">
-      📧 Email Us Your Ideas
-    </a>
   </section>
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-gray-400 py-6 text-center">
     <p>&copy; 2025 WebSpring. All rights reserved.</p>
   </footer>
+
+  <script>
+    (function () {
+      const email = 'webspringsites@gmail.com';
+      const btn = document.getElementById('copyEmail');
+      if (btn && navigator.clipboard) {
+        btn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(email);
+            const original = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(() => (btn.textContent = original), 1400);
+          } catch (e) {
+            // Fallback if clipboard API blocked
+            alert('Email: ' + email);
+          }
+        });
+      }
+    })();
+  </script>
 
 </body>
 </html>
